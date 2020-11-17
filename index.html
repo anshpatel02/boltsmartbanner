@@ -32,9 +32,11 @@
         <div id="headings">Bolt IoT Smart LCD</div>
         <div>Bolt ID:<input type="Text" id="boltid" placeholder="xxxx"></div>
         <div>API key:<input type="Text" id="apikey" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxx"></div>
-        <div>Enter the message you want to display below  <span style="font-size:30px"> &#128071;</span></div><br>
-        <input id="command" type="text" size="40"><br>
-        <button onclick="SendCommand()" class="button">Send</button><br>
+        <div>Enter the message you want to display below  <span style="font-size:30px"> &#128071;</span></div>
+        <input id="command" type="text" size="40">
+        <div style="margin-top: 10px;">
+            <button onclick="SendCommand()" class="button">Send</button>
+        </div>
         <div id="display"></div><br>
         <div id="commandstatus"></div><br>
         <div id="commandvalue"></div><br>
