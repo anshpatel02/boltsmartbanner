@@ -4,15 +4,37 @@
         <title>Lcd Display Interface</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     </head>
     <body>
-        <div >Only enter numerical part of the bolt id. For example if you want to send data device with id BOLT452317, then enter 452317</div><br>
-        <div>Bolt ID:<input type="Text" id="boltid" placeholder="xxxx"></div><br>
-        <div>API key:<input type="Text" id="apikey" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"></div><br>
-        <div >Enter the message you want to display below</div><br>
+        <label>
+            <input id="nightmode" type="checkbox">
+            <span class="check"></span>
+        </label>
+        <script>
+            document.getElementById("nightmode").addEventListener("change", function() {
+  if (document.getElementById("nightmode").checked == false) {
+    document.body.style.transition = "all 0.75s";
+    document.body.style.backgroundColor = "#57afab";
+    document.body.style.color="#000000";
+    document.body.style.fontFamily="Apercu, Source Sans Pro, system, system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Arial";
+    document.body.style.fontSize="30px";
+  } else {
+    document.body.style.transition = "all 0.75s";
+    document.body.style.backgroundColor = "#122736";
+    document.body.style.color="#3878a0";
+    document.body.style.fontFamily="Apercu, Source Sans Pro, system, system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Arial";
+    document.body.style.fontSize="30px";
+  }
+});
+        </script>
+        <div id="headings">Bolt IoT Smart LCD</div>
+        <div>Bolt ID:<input type="Text" id="boltid" placeholder="xxxx"></div>
+        <div>API key:<input type="Text" id="apikey" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxx"></div>
+        <div>Enter the message you want to display below  <span style="font-size:30px"> &#128071;</span></div><br>
         <input id="command" type="text" size="40"><br>
-        <button onclick="SendCommand()">Send</button><br>
+        <button onclick="SendCommand()" class="button">Send</button><br>
         <div id="display"></div><br>
         <div id="commandstatus"></div><br>
         <div id="commandvalue"></div><br>
@@ -38,8 +60,7 @@
                 $.get(link,function(success,value){
                     if(value=="success"){
                         if(success['success']==1){
-                            document.getElementById('commandstatus').innerHTML="The link was successful";
-                            document.getElementById('display').innerHTML="This is the link <a href=\""+link+"\">"+link+"</a>";
+                            document.getElementById('commandstatus').innerHTML="The task was successful";
                         }else{
                             document.getElementById('commandstatus').innerHTML=success['value'];
                         }
